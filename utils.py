@@ -1,5 +1,9 @@
 import numpy as np
-import torch
+import os, torch
+
+
+SETTINGS = {'droprate': 0.0, 'qkv_bias': True, 'n_vocab': 50257, 'n_ctx': 1024, 
+          'n_embd': 768, 'n_head': 12, 'n_layer': 12}
 
 
 def text_to_token_ids(text, tokenizer):
@@ -35,7 +39,8 @@ def generate(model, idx, max_num_tokens, context_length, temperature, top_k, eos
         idx = torch.cat([idx, idx_next], dim=-1)
     return idx
 
-def load_weights(model, path="static"):
-    model_state_dict = torch.load(path, weights_only=True)
+def load_weights(model, name, base_dir="static/weights"):
+    PATH = os.path.join(base_dir, f"{name}_model_weights.pth")
+    model_state_dict = torch.load(PATH, weights_only=True)
     model.load_state_dict(model_state_dict)
     return model

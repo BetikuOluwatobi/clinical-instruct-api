@@ -1,0 +1,117 @@
+<!-- 
+Credit: kiddyxyz.github.io
+KLOROFIL - Free Bootstrap Dashboard Template  -->
+
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Clinical Instruction | API Documentation</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href={{ url_for('static', filename='css/main.css') }}>
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+</head>
+
+<body>
+	<!-- WRAPPER -->
+	<div id="wrapper">
+        <center>
+            <span style="font-size:36px">
+                <div class="brand">
+                    <a href="#">Clinical Instruction API</a>
+                </div>
+            </span>
+        </center>
+		<!-- MAIN -->
+		<div class="main">
+			<!-- MAIN CONTENT -->
+			<div class="main-content">
+				<div class="container-fluid">
+					<h3 class="page-title">End Points</h3>
+					<h4 class="page-title">
+                        There is only one endpoint available for this API and this can be accessed via the, <code>/instruct</code> endpoint. 
+                        The endpoint takes the parameter <code>text</code> which instructs the underlying fine-tuned GPT2 LLM the instruction to carry out.
+                        Further explanation is given below. 
+                    </h4>
+					<div class="row">
+						<div class="col-md-7">
+							<!-- TABLE HOVER -->
+							<div class="panel">
+								<div class="panel-heading">
+									<h3 class="panel-title">/instruct</h3>
+								</div>
+								<div class="panel-body">
+									<table class="table table-hover">
+										<thead>
+											<tr>
+                                                <th>Method</th>
+												<th>Parameter</th>
+												<th>Type</th>
+												<th>Position</th>
+												<th>#</th>
+												<th>Description</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+                                                <td>POST</td>
+												<td>text</td>
+												<td><code>string</code></td>
+												<td><code>body</code></td>
+												<td><code>Required</code></td>
+												<td>Text to query the fine-tuned GPT2 model.</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- END TABLE HOVER -->
+						</div>
+						<div class="col-md-5">
+							<!-- TABLE HOVER -->
+							<div class="panel">
+								<div class="panel-heading">
+									<h3 class="panel-title">Response</h3>
+								</div>
+								<div class="panel-body">
+								<pre>{
+    "status": true,
+    "result_code": 200,
+    "message": "Success!",
+    "values": {
+        "Response": "model generated text",
+    }
+}</pre>
+								</div>
+							</div>
+							<!-- END TABLE HOVER -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END MAIN CONTENT -->
+		</div>
+		<!-- END MAIN -->
+		<div class="clearfix"></div>
+		<footer>
+			<div class="container-fluid">
+				<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
+			</div>
+		</footer>
+	</div>
+	<!-- END WRAPPER -->
+	<!-- Javascript -->
+	<script>
+	$(document).ready(function() {
+	  $('pre code').each(function(i, block) {
+		hljs.highlightBlock(block);
+	  });
+	});
+	</script>
+	<script src={{ url_for('static', filename='scripts/klorofil-common.js') }}></script>
+</body>
+
+</html>

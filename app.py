@@ -54,4 +54,5 @@ def instruct():
                          max_num_tokens=max_num_tokens, context_length=SETTINGS['n_ctx'], 
                          temperature=temperature, top_k=top_k, eos=50256)
     output = token_ids_to_text(token_ids, tokenizer)
-    return f"{output}"
+    resp = {'response': output}
+    return jsonify(resp)

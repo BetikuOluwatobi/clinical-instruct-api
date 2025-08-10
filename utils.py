@@ -2,9 +2,21 @@ import numpy as np
 import os, torch
 
 
-SETTINGS = {'droprate': 0.0, 'qkv_bias': True, 'n_vocab': 50257, 'n_ctx': 1024, 
-          'n_embd': 768, 'n_head': 12, 'n_layer': 12}
+CONFIG = {0:{'droprate': 0.0, 'qkv_bias': True, 'n_vocab': 50257, 'n_ctx': 1024, 
+             'n_embd': 768, 'n_head': 12, 'n_layer': 12},
+          1: {'droprate': 0.0,'qkv_bias': True,'n_vocab': 50257,'n_ctx': 1024,
+              'n_embd': 1024,'n_head': 16,'n_layer': 24}
+}
 
+
+def format_input(prompt, competency):
+    output = (
+        f"Below is an instruction that describes a clinical situation with a specific question, paired with the nursing competency and an optional SNOMED CT diagnostic codes relevant to the scenario to provide further context. "
+        f"Write ONLY a clinician response that appropriately completes the request.\n\n"
+        f"### Instruction:\n{prompt}"
+    )
+    output += (f"\n\n### Nursing Competency:\n{competency}" if competency else "")
+    return output
 
 def text_to_token_ids(text, tokenizer):
     token_ids = tokenizer.encode(text, allowed_special={"<|endoftext|>"})

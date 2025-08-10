@@ -1,12 +1,15 @@
 from flask import Flask, request, render_template, url_for, abort, jsonify
-from utils import text_to_token_ids, token_ids_to_text, generate, load_weights, SETTINGS 
+from utils import format_input, text_to_token_ids, token_ids_to_text, generate, load_weights, CONFIG 
 from model import GPT
-import os, tiktoken
+import os, tiktoken, torch
 
 app = Flask(__name__)
+torch.random.manual_seed(142)
 tokenizer = tiktoken.get_encoding('gpt2')
+SETTINGS = CONFIG[1]
 model = GPT(SETTINGS)
-model = load_weights(model, name="custom_124M")
+name = "finetuned_355M_nurse_competency_ddx_snomed"
+model = load_weights(model, name=name)
 
 
 
@@ -43,14 +46,15 @@ def index():
 
 @app.route("/instruct")
 def instruct():
-    text = request.args.get("text", None)
-    if text is None:
-        abort(400, description="'text' parameter is required.")
+    prompt = request.args.get("prompt", None)
+    if prompt is None:
+        abort(400, description="'prompt' parameter is required.")
+    competency = request.args.get("nursing_competency", None)
     max_num_tokens = handle_bad_request(request.args.get("max_num_tokens", 35), name="max_num_tokens")
-    temperature = handle_bad_request(request.args.get("temperature", 1), name="temperature")
+    temperature = handle_bad_request(request.args.get("temperature", 1.), name="temperature")
     top_k = handle_bad_request(request.args.get("top_k", 5), name="top_k")
 
-    token_ids = generate(model=model, idx=text_to_token_ids(text, tokenizer), 
+    token_ids = generate(model=model, idx=text_to_token_ids(format_input(prompt, competency), tokenizer), 
                          max_num_tokens=max_num_tokens, context_length=SETTINGS['n_ctx'], 
                          temperature=temperature, top_k=top_k, eos=50256)
     output = token_ids_to_text(token_ids, tokenizer)

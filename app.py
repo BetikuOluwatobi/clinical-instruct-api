@@ -6,10 +6,12 @@ import os, tiktoken, torch
 app = Flask(__name__)
 torch.random.manual_seed(142)
 tokenizer = tiktoken.get_encoding('gpt2')
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 SETTINGS = CONFIG[1]
 model = GPT(SETTINGS)
+model.to(device)
 name = "finetuned_355M_nurse_competency_ddx_snomed"
-model = load_weights(model, name=name)
+model = load_weights(model, name=name, device=device)
 
 
 

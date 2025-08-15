@@ -51,8 +51,8 @@ def generate(model, idx, max_num_tokens, context_length, temperature, top_k, eos
         idx = torch.cat([idx, idx_next], dim=-1)
     return idx
 
-def load_weights(model, name, base_dir="static/weights"):
+def load_weights(model, name, device, base_dir="static/weights"):
     PATH = os.path.join(base_dir, f"{name}_model_weights.pth")
-    model_state_dict = torch.load(PATH, weights_only=True)
+    model_state_dict = torch.load(PATH, weights_only=True, map_location=device)
     model.load_state_dict(model_state_dict)
     return model

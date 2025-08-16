@@ -144,6 +144,5 @@ This dashboard queries the API on port `3000` by default.
 
 * Model inference on CPU is **slow** (≈2 minutes per response for 100 tokens).
 * For best performance, run on a machine with GPU support.
-* You can extend this API with your frontend/dashboard or integrate it into other systems.
 
 ---

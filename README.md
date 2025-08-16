@@ -148,9 +148,3 @@ This dashboard queries the API on port `3000` by default.
 * You can extend this API with your frontend/dashboard or integrate it into other systems.
 
 ---
-
-## 📜 License
-
-This project is released under the MIT License.
-
----

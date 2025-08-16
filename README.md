@@ -64,7 +64,7 @@ During testing, I evaluated the responses using Microsoft Phi-3.5-mini-instruct,
 
    * Inside the repo, navigate to the `static` directory.
    * Create a folder named `weights`.
-   * Download the model weights from your [Google Drive](https://drive.google.com/drive/u/1/my-drive) and place them into the `weights` directory.
+   * Download the model weights from the [Google Drive](https://drive.google.com/drive/folders/1WK38_fb_5Gq67gkGZUV9ALLyqiyqJBoe?usp=sharing) and place them into the `weights` directory.
    * ⚠️ If you rename the file, update the **name variable** in `app.py`.
 
 ---

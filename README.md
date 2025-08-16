@@ -134,8 +134,7 @@ print(response.json())
 
 ## Dashboard Integration
 
-A simple dashboard app is available for visualizing and interacting with the API:
-👉 [Clinical-Instruct Dashboard](https://github.com/BetikuOluwatobi/clinical-instruct-dashboard)
+A simple dashboard app is available for visualizing and interacting with the API: [Clinical-Instruct Dashboard](https://github.com/BetikuOluwatobi/clinical-instruct-dashboard)
 
 This dashboard queries the API on port `3000` by default.
 

@@ -4,7 +4,7 @@ from model import GPT
 import os, tiktoken, torch
 
 app = Flask(__name__)
-torch.random.manual_seed(142)
+torch.random.manual_seed(96)
 tokenizer = tiktoken.get_encoding('gpt2')
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 SETTINGS = CONFIG[1]

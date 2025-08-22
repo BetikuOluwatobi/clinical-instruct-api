@@ -8,7 +8,7 @@ This repository contains a **Flask-based API** that serves a fine-tuned GPT-2 (3
 
 This project started as a way to put into practice some of the ideas I learned while studying how instruction fine-tuning works at a low level. I decided to revisit a clinical reasoning dataset from a past hackathon and experiment with applying GPT-2 (355M) to it. The model was trained and wrapped into a simple Flask API so that it could be queried directly or integrated into other applications.
 
-During testing, I evaluated the responses using Microsoft Phi-3.5-mini-instruct, and the fine-tuned model reached an automated conversational benchmark score of **68.33** on the test data. While not state-of-the-art, the results showed that the approach worked reasonably well and provided a solid hands-on learning experience. To make interaction easier, I also built a sample dashboard that connects to the API and lets users try out the model through a simple interface.
+During testing, I evaluated the responses using Microsoft Phi-3.5-mini-instruct, and the fine-tuned model reached an automated conversational benchmark score of [**68.33**](https://www.kaggle.com/code/oluwatobibetiku/clinical-data-evaluation) on the test data. While not state-of-the-art, the results showed that the approach worked reasonably well and provided a solid hands-on learning experience. To make interaction easier, I also built a sample dashboard that connects to the API and lets users try out the model through a simple interface.
 
 ---
 
